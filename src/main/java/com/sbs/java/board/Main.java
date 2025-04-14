@@ -3,14 +3,34 @@ package com.sbs.java.board;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.IntStream;
 
 public class Main {
+  static void makeArticleTestData(List<Article> articles){
+   /* v1
+    articles.add(new Article(1, "제목1", "제목1"));
+    articles.add(new Article(2, "제목2", "제목2"));
+    articles.add(new Article(3, "제목3", "제목3"));
+    */
+  /* v2
+    for(int i = 1; i <= 3; i++){
+      articles.add(new Article(i, "제목" + i, "내용" + i));
+    }
+ */
+    
+    IntStream.rangeClosed(1,3)
+        .forEach(i -> articles.add(new Article(i, "제목" + i, "내용" + i)));
+  }
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
+
+    List<Article> articles = new ArrayList<>();
+
     int lastArticleId = 0;
     Article lastArticle = null;
 
-    List<Article> articles = new ArrayList<>();
+    makeArticleTestData(articles);
+
 
     System.out.println("== 자바 텍스트 게시판 ==");
     System.out.println("== 텍스트 게시판 시작합니다. ==");
