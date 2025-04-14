@@ -17,7 +17,7 @@ public class Main {
       articles.add(new Article(i, "제목" + i, "내용" + i));
     }
  */
-    
+
     IntStream.rangeClosed(1,3)
         .forEach(i -> articles.add(new Article(i, "제목" + i, "내용" + i)));
   }
@@ -26,11 +26,11 @@ public class Main {
 
     List<Article> articles = new ArrayList<>();
 
-    int lastArticleId = 0;
-    Article lastArticle = null;
-
     makeArticleTestData(articles);
 
+    int lastArticleId = articles.get(articles.size() - 1).id;
+
+    Article lastArticle = null;
 
     System.out.println("== 자바 텍스트 게시판 ==");
     System.out.println("== 텍스트 게시판 시작합니다. ==");
